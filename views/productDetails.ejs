@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-IE">
+<%- include('../views/partials/head'); %>
+<header>
+    <%- include('../views/partials/header'); %>
+</header>
+<body class="text-center">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <main role="main" class="inner cover">
+        <section class="container">
+            <section class="row">
+                <h1>Market Catalog</h1>
+            </section>
+            <hr>
+            <article class="table-responsive-sm">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th><%= product.name%></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr>
+                        <td><img src="<%= product.image%>" title="image name" alt="<%= product.name%>" height="300" width="300"></td>
+                    </tr>
+                        <!-- images from here: http://pngimg.com/ -->
+
+                    <tr>
+                        <td>Category: <%= product.category %></td>
+                    </tr>
+
+                    <tr>
+                        <td>Calories: <%= product.calories %></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </article>
+        </section>
+    </main>
+    <%- include('../views/partials/footer'); %>
+</div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-IE">
+<%- include('../views/partials/head'); %>
+<header>
+    <%- include('../views/partials/header'); %>
+</header>
+<body class="text-center">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <main role="main" class="inner cover">
+        <section class="container">
+            <section class="row">
+                <h1>Meal Plans</h1>
+            </section>
+
+            <article class="table-responsive-sm">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th><h2>Create or view Meal Plans</h2></th>
+                    </tr>
+
+                    <tr>
+                        <th><h5><a href="/mealPlanCreate">Create a Meal Plan</a></h5></th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+
+                    <tr>
+                        <th>Breakfast</th> <!--This over here is really ineffective for large dbs -->
+                        <% mealPlan.forEach((meal) => { %>
+                        <%if(meal.type === "breakfast" && meal.foodLogID === userFoodLog) { %>
+                    </tr>
+                    <tr>
+                        <td><a href="/mealPlanEdit/<%= meal.mealPlanID%>">Meal Plan: <%= meal.mealPlanID%> - <%= meal.type%> </a></td>
+                        <td>
+                            <form action="/mealPlan/delete/<%= meal.mealPlanID%>" method="POST">
+                                <input type="submit" value="Delete" class="btn btn-default btn-danger">
+                            </form>
+                        </td>
+                    </tr>
+                    <% }%>
+                    <% }); %>
+
+
+                    <tr>
+                        <th>Lunch</th>
+                        <% mealPlan.forEach((meal) => { %>
+                        <%if(meal.type === "lunch" && meal.foodLogID === userFoodLog) { %>
+                    </tr>
+                    <tr>
+                        <td><a href="/mealPlanEdit/<%= meal.mealPlanID%>">Meal Plan: <%= meal.mealPlanID%> - <%= meal.type%> </a></td>
+                        <td>
+                            <form action="/mealPlan/delete/<%= meal.mealPlanID%>" method="POST">
+                                <input type="submit" value="Delete" class="btn btn-default btn-danger">
+                            </form>
+                        </td>
+                    </tr>
+                    <% }%>
+                    <% }); %>
+
+
+                    <tr>
+                        <th>Dinner</th>
+                        <% mealPlan.forEach((meal) => { %>
+                        <%if(meal.type === "dinner" && meal.foodLogID === userFoodLog) { %>
+                    </tr>
+
+                    <tr>
+                        <td><a href="/mealPlanEdit/<%= meal.mealPlanID%>">Meal Plan: <%= meal.mealPlanID%> - <%= meal.type%> </a></td>
+                        <td>
+                            <form action="/mealPlan/delete/<%= meal.mealPlanID%>" method="POST">
+                                <input type="submit" value="Delete" class="btn btn-default btn-danger">
+                            </form>
+                        </td>
+                    </tr>
+                    <% }%>
+                    <% }); %>
+                    </tbody>
+                </table>
+
+                <a href="/report"><h5>Generate Report</h5></a>
+
+            </article>
+        </section>
+
+
+    </main>
+    <%- include('../views/partials/footer'); %>
+
+</div>
+</body>
+</html>

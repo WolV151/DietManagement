@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en-IE">
+<%- include('../views/partials/head'); %>
+<header>
+    <%- include('../views/partials/header'); %>
+</header>
+<body class="text-center">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <main role="main" class="inner cover">
+        <section class="container">
+            <section class="row">
+                <h1><%= meal.name%></h1>
+            </section>
+            <hr>
+            <article class="table-responsive-sm">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr></tr>
+
+                    <tr>
+                        <th>Category: <%= meal.type %></th>
+                    </tr>
+
+                    <tr>
+                        <th>Calories: <%= meal.totalCalories %></th>
+                    </tr>
+
+                    <tr>
+                        <th>Current items in Plan: </th>
+
+                    </tr>
+
+                        <% products.forEach((product => { %>
+                            <% if(product.mealPlanID === meal.mealPlanID) {%>
+                                <tr>
+                                    <td>Item: <%= product.name%>  |  Quantity: <%= product.quantity%>
+                                        |   Calories: <%= product.itemCalories%>  |  Category: <%= product.category%></td>
+
+                                    <td>
+                                        <form action="/mealPlanEdit/delete/<%= product.itemID%>" method="POST">
+                                            <input type="submit" value="Delete" class="btn btn-default btn-danger">
+                                        </form>
+                                    </td>
+
+                                </tr>
+                            <% }%>
+                        <% })); %>
+
+
+                    <tr>
+                        <td><a href="/catalog/<%= meal.mealPlanID%>">Add Items to plan.</a></td>
+                    </tr>
+
+
+                    <tr>
+                        <td><a href="/mealPlan">Return to Meal Plan</a></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </article>
+        </section>
+    </main>
+    <%- include('../views/partials/footer'); %>
+</div>
+</body>
+</html>

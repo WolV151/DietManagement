@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-IE">
+<%- include('../views/partials/head'); %>
+<header>
+    <%- include('../views/partials/header'); %>
+</header>
+<body class="text-center">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <main role="main" class="inner cover">
+        <section class="container">
+            <section class="row">
+                <h1>Report</h1>
+            </section>
+            <hr>
+            <article class="table-responsive-sm">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th><%= foodLog.userName%>'s Statistics</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Calories for the day: <%= foodLog.totalCalories %></td>
+                    </tr>
+
+                    <tr>
+                        <td>BMR: <%= bmr%> calories</td>
+                    </tr>
+
+                    <tr>
+                        <td>Summary: <%= message%></td>
+                    </tr>
+
+
+                    </tbody>
+                </table>
+            </article>
+        </section>
+
+
+    </main>
+    <%- include('../views/partials/footer'); %>
+</div>
+</body>
+</html>
